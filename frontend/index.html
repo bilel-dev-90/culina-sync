@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF--8">
+    <title>CulinaSync</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CulinaSync - Dein Rezept-Manager</h1>
+    <div>
+        <label for="backend-selector">Backend wählen:</label>
+        <select id="backend-selector">
+            <option value="sql" selected>SQL Backend</option>
+            <option value="nosql">NoSQL Backend</option>
+        </select>
+    </div>
+    <hr>
+    <h2>Rezepte</h2>
+    <ul id="recipe-list">
+        <!-- Rezepte werden hier per JavaScript eingefügt -->
+    </ul>
+    <script src="app.js"></script>
+</body>
+</html>

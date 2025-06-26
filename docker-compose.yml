@@ -1,0 +1,50 @@
+# /culina-sync/docker-compose.yml
+
+version: '3.8'
+services:
+  # Dein SQL-Backend
+  backend-sql:
+    build: ./backend-sql
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/recipes_db
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - postgres-db
+
+  # Das NoSQL-Backend deines Partners
+  backend-nosql:
+    build: ./backend-nosql
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo-db:27017/recipes_db
+    depends_on:
+      - mongo-db
+
+  # Das Frontend
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend-sql
+      - backend-nosql
+
+  # Die Datenbanken
+  postgres-db:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=recipes_db
+    ports:
+      - "5432:5432" # Praktisch zum direkten Reinschauen in die DB
+
+  mongo-db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
