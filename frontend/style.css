@@ -1,23 +1,41 @@
-/* Custom Styles für CulinaSync */
+body {
+    background-color: #f8f9fa;
+}
 
 .recipe-card {
     cursor: pointer;
     margin-bottom: 1rem;
-    transition: transform 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
-
 .recipe-card:hover {
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
-
 .recipe-card.selected {
-    /* Nutzt die Primärfarbe von Pico.css */
     outline: 2px solid var(--pico-primary); 
     border-left: 5px solid var(--pico-primary);
 }
 
-/* Sorgt dafür, dass der "Löschen"-Button im Zutaten-Formular klein ist */
 .remove-ingredient-btn {
     padding: 0.5rem;
-    max-width: 50px;
+    max-width: 45px;
+    height: 45px;
+    line-height: 1;
+}
+
+.tab-link {
+    color: var(--pico-muted-color);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    margin-right: 1.5rem;
+    border-bottom: 2px solid transparent;
+}
+.tab-link.active {
+    color: var(--pico-primary);
+    border-bottom-color: var(--pico-primary);
+}
+
+#servings-input-container label,
+#servings-input-container input {
+    margin-bottom: 0;
 }

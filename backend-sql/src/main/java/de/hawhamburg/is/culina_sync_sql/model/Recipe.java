@@ -6,8 +6,8 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.ArrayList;
 
-@Entity // Sagt JPA: Dies ist eine Tabelle in der Datenbank
-@Table(name = "recipes") // Name der Tabelle
+@Entity
+@Table(name = "recipes")
 public class Recipe {
 
     @Id
@@ -19,23 +19,27 @@ public class Recipe {
     @Column(columnDefinition = "TEXT")
     private String instructions;
 
-    // Eine Rezept hat viele Zutaten.
-    // cascade = CascadeType.ALL: Wenn ein Rezept gespeichert/gelöscht wird, werden auch die Zutaten gespeichert/gelöscht.
-    // orphanRemoval = true: Wenn eine Zutat aus dieser Liste entfernt wird, wird sie aus der DB gelöscht.
+    // NEU: Feld für die Anzahl der Portionen
+    private int servings;
+
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    // Einfache Liste von Strings für die Tags
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> tags = new ArrayList<>();
 
-    // Getter und Setter...
+    // --- Getter und Setter ---
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
     public String getInstructions() { return instructions; }
     public void setInstructions(String instructions) { this.instructions = instructions; }
+
+    // NEU: Getter und Setter für servings
+    public int getServings() { return servings; }
+    public void setServings(int servings) { this.servings = servings; }
+
     public List<Ingredient> getIngredients() { return ingredients; }
     public void setIngredients(List<Ingredient> ingredients) { this.ingredients = ingredients; }
     public List<String> getTags() { return tags; }
