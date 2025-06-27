@@ -1,0 +1,23 @@
+/* Custom Styles für CulinaSync */
+
+.recipe-card {
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: transform 0.1s ease-in-out;
+}
+
+.recipe-card:hover {
+    transform: translateY(-2px);
+}
+
+.recipe-card.selected {
+    /* Nutzt die Primärfarbe von Pico.css */
+    outline: 2px solid var(--pico-primary); 
+    border-left: 5px solid var(--pico-primary);
+}
+
+/* Sorgt dafür, dass der "Löschen"-Button im Zutaten-Formular klein ist */
+.remove-ingredient-btn {
+    padding: 0.5rem;
+    max-width: 50px;
+}

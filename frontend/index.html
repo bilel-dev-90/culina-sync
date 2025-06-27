@@ -1,24 +1,62 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="light">
 <head>
-    <meta charset="UTF--8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CulinaSync</title>
+    <!-- Pico.css für ein sauberes, modernes Design ohne Aufwand -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <!-- Eigene Styles, die Pico überschreiben oder ergänzen können -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>CulinaSync - Dein Rezept-Manager</h1>
-    <div>
-        <label for="backend-selector">Backend wählen:</label>
-        <select id="backend-selector">
-            <option value="sql" selected>SQL Backend</option>
-            <option value="nosql">NoSQL Backend</option>
-        </select>
-    </div>
-    <hr>
-    <h2>Rezepte</h2>
-    <ul id="recipe-list">
-        <!-- Rezepte werden hier per JavaScript eingefügt -->
-    </ul>
+    <main class="container">
+        <!-- KOPFZEILE -->
+        <header>
+            <hgroup>
+                <h1>CulinaSync 🍳</h1>
+                <h2>Dein digitaler Rezept-Manager</h2>
+            </hgroup>
+            <nav>
+                <ul>
+                    <li>
+                        <label for="backend-selector">Backend:</label>
+                        <select id="backend-selector">
+                            <option value="sql" selected>SQL</option>
+                            <option value="nosql">NoSQL</option>
+                        </select>
+                    </li>
+                </ul>
+                <ul>
+                    <li><button id="new-recipe-btn" class="contrast">Neues Rezept +</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <hr>
+
+        <!-- ZWEI-SPALTEN-LAYOUT -->
+        <div class="grid">
+            <!-- LINKE SPALTE: Rezeptliste & Suche -->
+            <aside>
+                <h3>Meine Rezepte</h3>
+                <input type="search" id="search-input" name="search" placeholder="Suche nach Titel oder Zutat...">
+                <div id="recipe-list-container">
+                    <!-- Die Rezept-Karten werden hier per JS eingefügt -->
+                    <p>Lade Rezepte...</p>
+                </div>
+            </aside>
+
+            <!-- RECHTE SPALTE: Inhalt (Detailansicht oder Formular) -->
+            <section id="content-view">
+                <article>
+                    <h3>Willkommen!</h3>
+                    <p>Wähle links ein Rezept aus oder erstelle ein neues.</p>
+                </article>
+            </section>
+        </div>
+    </main>
+
     <script src="app.js"></script>
 </body>
 </html>
