@@ -1,24 +1,61 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="light">
 <head>
-    <meta charset="UTF--8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CulinaSync</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>CulinaSync - Dein Rezept-Manager</h1>
-    <div>
-        <label for="backend-selector">Backend wählen:</label>
-        <select id="backend-selector">
-            <option value="sql" selected>SQL Backend</option>
-            <option value="nosql">NoSQL Backend</option>
-        </select>
-    </div>
-    <hr>
-    <h2>Rezepte</h2>
-    <ul id="recipe-list">
-        <!-- Rezepte werden hier per JavaScript eingefügt -->
-    </ul>
+    <main class="container">
+        <header>
+            <hgroup><h1>CulinaSync 🍳</h1><h2>Dein digitaler Rezept-Manager</h2></hgroup>
+            <nav>
+                <ul>
+                    <li><label for="backend-selector">Backend:</label><select id="backend-selector"><option value="sql" selected>SQL</option><option value="nosql">NoSQL</option></select></li>
+                </ul>
+                <ul><li><button id="new-recipe-btn" class="contrast">Neues Rezept +</button></li></ul>
+            </nav>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#" class="tab-link active" data-tab="my-recipes">Meine Rezepte</a></li>
+                <li><a href="#" class="tab-link" data-tab="discover">Entdecken</a></li>
+                <li><a href="#" class="tab-link" data-tab="ai-chef">AI Chef 🤖</a></li>
+            </ul>
+        </nav>
+        
+        <hr>
+
+        <div class="grid">
+            <aside id="recipe-list-panel">
+                <div id="my-recipes-view">
+                    <h3>Meine Rezepte</h3>
+                    <input type="search" id="search-input" name="search" placeholder="Suche nach Titel oder Zutat...">
+                    <div id="recipe-list-container"><p>Lade Rezepte...</p></div>
+                </div>
+                <div id="discover-view" style="display: none;">
+                     <h3>Rezepte entdecken</h3>
+                     <div id="discover-list-container"><p>Lade zufällige Rezepte...</p></div>
+                </div>
+                <div id="ai-chef-view" style="display: none;">
+                    <h3>AI Chef</h3>
+                    <p>Welche Zutaten hast du im Kühlschrank?</p>
+                    <form id="ai-chef-form">
+                        <input type="text" id="ai-ingredients-input" name="ai-ingredients" placeholder="z.B. Hähnchen, Reis, Paprika" required>
+                        <button type="submit">Finde Rezepte!</button>
+                    </form>
+                    <div id="ai-results-container"></div>
+                </div>
+            </aside>
+
+            <section id="content-view">
+                <article><h3>Willkommen!</h3><p>Wähle links ein Rezept aus oder erstelle ein neues.</p></article>
+            </section>
+        </div>
+    </main>
     <script src="app.js"></script>
 </body>
 </html>
