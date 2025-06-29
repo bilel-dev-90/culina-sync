@@ -1,33 +1,36 @@
-package de.hawhamburg.is.culina_sync_nosql.Model;
+// in package de.hawhamburg.is.culina_sync_nosql.model
+package de.hawhamburg.is.culina_sync_nosql.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.ArrayList;
 import java.util.List;
 
-@Document(collection = "recipes") // Sagt Spring: Dies ist ein MongoDB-Dokument
+// @Document für MongoDB
+@Document(collection = "recipes")
 public class Recipe {
 
-    @Id // Markiert dieses Feld als die eindeutige ID des Dokuments
-    private String id; // Bei MongoDB ist die ID typischerweise ein String
+    // Spring Data MongoDB Annotation für die ID
+    @Id
+    private String id;
 
     private String title;
     private String instructions;
+    private int servings;
 
-    // Die Zutaten sind einfach eine Liste von Objekten, die direkt
-    // im Rezept-Dokument mit gespeichert wird.
+    // Einfache Listen, keine JPA-Annotationen
     private List<Ingredient> ingredients = new ArrayList<>();
-
-    // Tags sind ebenfalls nur eine einfache Liste von Strings.
     private List<String> tags = new ArrayList<>();
 
-    // Getter und Setter...
+    // ... (alle Getter und Setter) ...
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
     public String getInstructions() { return instructions; }
     public void setInstructions(String instructions) { this.instructions = instructions; }
+    public int getServings() { return servings; }
+    public void setServings(int servings) { this.servings = servings; }
     public List<Ingredient> getIngredients() { return ingredients; }
     public void setIngredients(List<Ingredient> ingredients) { this.ingredients = ingredients; }
     public List<String> getTags() { return tags; }

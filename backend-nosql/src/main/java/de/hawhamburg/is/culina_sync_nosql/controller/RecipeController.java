@@ -1,8 +1,8 @@
 // in package de.hawhamburg.is.culina_sync_nosql.controller
-package de.hawhamburg.is.culina_sync_nosql.Controller;
+package de.hawhamburg.is.culina_sync_nosql.controller;
 
-import de.hawhamburg.is.culina_sync_nosql.Model.Recipe;
-import de.hawhamburg.is.culina_sync_nosql.Repository.RecipeRepository;
+import de.hawhamburg.is.culina_sync_nosql.model.Recipe;
+import de.hawhamburg.is.culina_sync_nosql.repository.RecipeRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
-package de.hawhamburg.is.culina_sync_nosql.Repository;
+package de.hawhamburg.is.culina_sync_nosql.repository;
 
-import de.hawhamburg.is.culina_sync_nosql.Model.Recipe;
+import de.hawhamburg.is.culina_sync_nosql.model.Recipe;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

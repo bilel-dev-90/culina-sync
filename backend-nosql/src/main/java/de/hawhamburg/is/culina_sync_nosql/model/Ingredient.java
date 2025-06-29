@@ -1,4 +1,4 @@
-package de.hawhamburg.is.culina_sync_nosql.Model;
+package de.hawhamburg.is.culina_sync_nosql.model;
 
 public class Ingredient {
     private String name;
