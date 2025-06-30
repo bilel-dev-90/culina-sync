@@ -1,7 +1,12 @@
+/* Custom Styles für CulinaSync */
+
+/* Globale Stile & Hintergrund */
 body {
-    background-color: #f8f9fa;
+    background-color: #f8f9fa; /* Sauberes, helles Grau */
 }
 
+/* KARTEN & LAYOUT */
+/* Dies gilt für die Karten in "Meine Rezepte" */
 .recipe-card {
     cursor: pointer;
     margin-bottom: 1rem;
@@ -16,13 +21,7 @@ body {
     border-left: 5px solid var(--pico-primary);
 }
 
-.remove-ingredient-btn {
-    padding: 0.5rem;
-    max-width: 45px;
-    height: 45px;
-    line-height: 1;
-}
-
+/* TAB-NAVIGATION */
 .tab-link {
     color: var(--pico-muted-color);
     text-decoration: none;
@@ -35,7 +34,74 @@ body {
     border-bottom-color: var(--pico-primary);
 }
 
+/* FORMULAR-ELEMENTE */
+.remove-ingredient-btn {
+    padding: 0.5rem;
+    max-width: 45px;
+    height: 45px;
+    line-height: 1;
+}
 #servings-input-container label,
 #servings-input-container input {
     margin-bottom: 0;
+}
+#image-preview {
+    max-width: 150px;
+    height: auto;
+    margin-top: 0.5rem;
+    border-radius: var(--pico-border-radius);
+    display: none;
+}
+
+/* === "NETFLIX-SLIDER" FÜR KATEGORIEN IM ENTDECKEN-TAB === */
+.category-container {
+    margin-bottom: 2rem; /* Abstand zwischen den Slidern */
+}
+.category-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem 0.5rem; /* Etwas Padding, damit die Karten nicht am Rand kleben */
+    /* Styling für die Scrollbar */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--pico-form-element-border-color) transparent;
+}
+/* Versteckt die Scrollbar bei Webkit-Browsern (Chrome, Safari), aber Scrollen geht trotzdem */
+.category-slider::-webkit-scrollbar {
+    height: 8px;
+}
+.category-slider::-webkit-scrollbar-track {
+    background: transparent;
+}
+.category-slider::-webkit-scrollbar-thumb {
+    background-color: var(--pico-form-element-border-color);
+    border-radius: 10px;
+}
+
+/* Eigene Stile für die kleineren Karten im Slider */
+.recipe-card-discover {
+    flex: 0 0 220px; /* Jede Karte ist 220px breit und schrumpft/wächst nicht */
+    padding: 0; /* Entfernt das Standard-Padding von <article> */
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+.recipe-card-discover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+.recipe-card-discover img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-top-left-radius: var(--pico-border-radius);
+    border-top-right-radius: var(--pico-border-radius);
+    margin: 0;
+    padding: 0;
+}
+.recipe-card-discover .card-content {
+    padding: 1rem;
+}
+.recipe-card-discover .card-content strong {
+    font-size: 0.9rem;
 }

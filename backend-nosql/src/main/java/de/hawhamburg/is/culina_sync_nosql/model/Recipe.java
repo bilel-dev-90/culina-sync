@@ -1,4 +1,3 @@
-// in package de.hawhamburg.is.culina_sync_nosql.model
 package de.hawhamburg.is.culina_sync_nosql.model;
 
 import org.springframework.data.annotation.Id;
@@ -6,11 +5,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.ArrayList;
 import java.util.List;
 
-// @Document für MongoDB
 @Document(collection = "recipes")
 public class Recipe {
 
-    // Spring Data MongoDB Annotation für die ID
     @Id
     private String id;
 
@@ -18,11 +15,13 @@ public class Recipe {
     private String instructions;
     private int servings;
 
-    // Einfache Listen, keine JPA-Annotationen
+    // NEU: Feld für die Bild-URL
+    private String imageUrl;
+
     private List<Ingredient> ingredients = new ArrayList<>();
     private List<String> tags = new ArrayList<>();
 
-    // ... (alle Getter und Setter) ...
+    // --- Getter und Setter ---
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
     public String getTitle() { return title; }
@@ -31,6 +30,11 @@ public class Recipe {
     public void setInstructions(String instructions) { this.instructions = instructions; }
     public int getServings() { return servings; }
     public void setServings(int servings) { this.servings = servings; }
+
+    // NEU: Getter und Setter für imageUrl
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+
     public List<Ingredient> getIngredients() { return ingredients; }
     public void setIngredients(List<Ingredient> ingredients) { this.ingredients = ingredients; }
     public List<String> getTags() { return tags; }

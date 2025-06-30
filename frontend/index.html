@@ -12,9 +12,7 @@
         <header>
             <hgroup><h1>CulinaSync 🍳</h1><h2>Dein digitaler Rezept-Manager</h2></hgroup>
             <nav>
-                <ul>
-                    <li><label for="backend-selector">Backend:</label><select id="backend-selector"><option value="sql" selected>SQL</option><option value="nosql">NoSQL</option></select></li>
-                </ul>
+                <ul><li><label for="backend-selector">Backend:</label><select id="backend-selector"><option value="sql" selected>SQL</option><option value="nosql">NoSQL</option></select></li></ul>
                 <ul><li><button id="new-recipe-btn" class="contrast">Neues Rezept +</button></li></ul>
             </nav>
         </header>
@@ -23,7 +21,7 @@
             <ul>
                 <li><a href="#" class="tab-link active" data-tab="my-recipes">Meine Rezepte</a></li>
                 <li><a href="#" class="tab-link" data-tab="discover">Entdecken</a></li>
-                <li><a href="#" class="tab-link" data-tab="ai-chef">AI Chef 🤖</a></li>
+                <li><a href="#" class="tab-link" data-tab="restekoch">Reste-Koch 🧑‍🍳</a></li>
             </ul>
         </nav>
         
@@ -33,29 +31,39 @@
             <aside id="recipe-list-panel">
                 <div id="my-recipes-view">
                     <h3>Meine Rezepte</h3>
-                    <input type="search" id="search-input" name="search" placeholder="Suche nach Titel oder Zutat...">
+                    <input type="search" id="search-input" name="search" placeholder="Suche nach Titel...">
                     <div id="recipe-list-container"><p>Lade Rezepte...</p></div>
                 </div>
                 <div id="discover-view" style="display: none;">
-                     <h3>Rezepte entdecken</h3>
-                     <div id="discover-list-container"><p>Lade zufällige Rezepte...</p></div>
-                </div>
-                <div id="ai-chef-view" style="display: none;">
-                    <h3>AI Chef</h3>
-                    <p>Welche Zutaten hast du im Kühlschrank?</p>
-                    <form id="ai-chef-form">
-                        <input type="text" id="ai-ingredients-input" name="ai-ingredients" placeholder="z.B. Hähnchen, Reis, Paprika" required>
-                        <button type="submit">Finde Rezepte!</button>
+					<h3>Entdecken</h3>
+					<!-- NEU: Suchformular für den Entdecken-Tab -->
+					<form id="discover-search-form" class="grid">
+						<input type="search" name="discoverQuery" placeholder="Suche nach englischen Rezeptnamen...">
+						<button type="submit">Suchen</button>
+					</form>
+					<hr>
+					<!-- Container für die Kategorie-Slider -->
+					<div id="discover-category-container"></div>
+				</div>
+                <div id="restekoch-view" style="display: none;">
+                    <h3>Reste-Koch</h3>
+                    <form id="restekoch-form">
+                        <label for="restekoch-ingredients">Welche Zutaten hast du?</label>
+						<small>Bitte Zutaten auf Englisch und mit Komma getrennt eingeben.</small> <!-- NEUER HINWEIS -->
+                        <input type="text" id="restekoch-ingredients" placeholder="z.B. chicken, rice" required>
+                        <button type="submit" aria-busy="false">Finde Rezepte!</button>
                     </form>
-                    <div id="ai-results-container"></div>
+                    <div id="restekoch-results-container"></div>
                 </div>
             </aside>
 
             <section id="content-view">
-                <article><h3>Willkommen!</h3><p>Wähle links ein Rezept aus oder erstelle ein neues.</p></article>
+                <article><h3>Willkommen!</h3><p>Wähle links ein Rezept aus.</p></article>
             </section>
         </div>
     </main>
-    <script src="app.js"></script>
+    
+    <!-- JavaScript-Dateien werden als Module geladen -->
+    <script type="module" src="app.js"></script>
 </body>
 </html>

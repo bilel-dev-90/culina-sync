@@ -1,16 +1,13 @@
-// in package de.hawhamburg.is.culina_sync_sql.model
 package de.hawhamburg.is.culina_sync_sql.model;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// @Entity für SQL-Tabellen
 @Entity
 @Table(name = "recipes")
 public class Recipe {
 
-    // JPA-Annotationen für die ID
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,11 +19,12 @@ public class Recipe {
 
     private int servings;
 
-    // JPA-Beziehung für die Zutaten
+    // NEU: Feld für die Bild-URL
+    private String imageUrl;
+
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Ingredient> ingredients = new ArrayList<>();
 
-    // JPA-Annotation für eine einfache Sammlung
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> tags = new ArrayList<>();
 
@@ -39,6 +37,11 @@ public class Recipe {
     public void setInstructions(String instructions) { this.instructions = instructions; }
     public int getServings() { return servings; }
     public void setServings(int servings) { this.servings = servings; }
+
+    // NEU: Getter und Setter für imageUrl
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+
     public List<Ingredient> getIngredients() { return ingredients; }
     public void setIngredients(List<Ingredient> ingredients) { this.ingredients = ingredients; }
     public List<String> getTags() { return tags; }
